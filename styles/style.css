@@ -1,0 +1,19 @@
+/*  light mode / dark mode  */
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #2b2d30;
+        --text: #ffffff;
+    }
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 1.5s, color 0.5s;
+}
+
