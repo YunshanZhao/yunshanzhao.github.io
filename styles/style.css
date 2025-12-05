@@ -1,19 +1,26 @@
 /*  light mode / dark mode  */
 :root {
-    --bg: #ffffff;
+    --background: #ffffff;
     --text: #000000;
+    --highlight: #f5f8fe;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #2b2d30;
+        --background: #1e1f22;
         --text: #ffffff;
+        --highlight: #26282e;
     }
 }
 
 body {
-    background-color: var(--bg);
+    font-family: system-ui, Inter, sans-serif;
+    background-color: var(--background);
     color: var(--text);
     transition: background-color 1.5s, color 0.5s;
+}
+
+code {
+    font-family: ui-monospace, 'JetBrains Mono', monospace;
 }
 
