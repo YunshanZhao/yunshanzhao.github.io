@@ -1,26 +1,66 @@
 /*  light mode / dark mode  */
 :root {
-    --background: #ffffff;
-    --text: #000000;
-    --highlight: #f5f8fe;
+    --background: #1e1f22;
+    --text: #ffffff;
+    --hover: #26282e;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
     :root {
-        --background: #1e1f22;
-        --text: #ffffff;
-        --highlight: #26282e;
+        --background: #ffffff;
+        --text: #000000;
+        --hover: #f5f8fe;
     }
 }
 
 body {
-    font-family: system-ui, Inter, sans-serif;
     background-color: var(--background);
     color: var(--text);
     transition: background-color 1.5s, color 0.5s;
 }
 
-code {
-    font-family: ui-monospace, 'JetBrains Mono', monospace;
+
+
+/*  fonts  */
+body {
+    font-family: system-ui, sans-serif;
+    font-size: 4vh;
 }
 
+code {
+    font-family: ui-monospace, monospace;
+    font-size: 4vh;
+}
+
+footer {
+    font-family: system-ui, sans-serif;
+    font-size: 3vh;
+}
+
+
+
+/*  links  */
+a:link {
+    color: #375eac;
+}
+
+a:visited {
+    color: #375eac;
+}
+
+a:hover {
+    color: #f0c35b;
+    text-decoration: none;
+}
+
+
+
+/*  cards  */
+.card {
+    width: 40vw;
+    height: 40vh;
+    background-image: url('../images/temp.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
