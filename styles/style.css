@@ -1,16 +1,14 @@
 /*  light mode / dark mode  */
-:root {
+[data-theme="dark"] {
     --background: #1e1f22;
     --text: #ffffff;
-    --hover: #26282e;
+    --border: #595c62;
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-        --background: #ffffff;
-        --text: #000000;
-        --hover: #f5f8fe;
-    }
+[data-theme="light"] {
+    --background: #ffffff;
+    --text: #000000;
+    --border: #a9aebe;
 }
 
 body {
@@ -21,31 +19,75 @@ body {
 
 
 
-/*  fonts  */
+/*  navigation bar  */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+    background: var(--background);
+    border-bottom: 0.1rem solid var(--border);
+    z-index: 1000;
+}
+
 body {
+    padding-top: 3rem; /* 避免内容被导航栏遮住 */
+}
+
+.nav-left {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-left a {
+    color: var(--text);
+    text-decoration: none; /* 去掉链接下划线 */
+    font-weight: 600;
+}
+
+#theme-toggle {
+    background: var(--background);
+    border: none;
+    color: var(--text);
+    cursor: pointer; /* 鼠标变成手形 */
+    font-size: 1rem;
+}
+
+
+
+/*  fonts  */
+html {
     font-family: system-ui, sans-serif;
-    font-size: 4vh;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 code {
     font-family: ui-monospace, monospace;
-    font-size: 4vh;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 footer {
     font-family: system-ui, sans-serif;
-    font-size: 3vh;
+    font-size: 0.5rem;
+    line-height: 1.5;
 }
 
 
 
 /*  links  */
 a:link {
-    color: #375eac;
+    color: var(--text);
 }
 
 a:visited {
-    color: #375eac;
+    color: var(--text);
 }
 
 a:hover {
@@ -59,8 +101,11 @@ a:hover {
 .card {
     width: 40vw;
     height: 40vh;
+    margin: 2vw;
+    border-radius: 2vw;
     background-image: url('../images/temp.JPG');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
 }
+

@@ -5,14 +5,38 @@
 
     <head>
 
+
         <meta charset="utf-8" />
-        <meta name="description" content="Yunshan Zhao's Homepage." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+        <title>Yunshan Zhao - Homepage</title>
+        <meta name="description" content="Yunshan Zhao | Master's Student in AI @ Shandong University. Research in deep learning and computational biology." />
+        <meta name="author" content="Yunshan Zhao" />
+
+        <meta property="og:title" content="Yunshan Zhao - Homepage" />
+        <meta property="og:description" content="Yunshan Zhao | Master's Student in AI @ Shandong University. Research in deep learning and computational biology." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yunshanzhao.github.io" />
+        <meta property="og:image" content="https://yunshanzhao.github.io/images/icon.JPG" />
+        <meta property="og:locale" content="en-US" />
+
         <link rel="icon" href="./images/icon.JPG" />
+        <link rel="apple-touch-icon" href="./images/icon.JPG" />
+
         <link rel="stylesheet" href="./styles/style.css" />
 
-        <title>Yunshan Zhao - Homepage</title>
+        <!-- js确定主题，在指定css后，在</head>前。避免闪屏。 -->
+        <script>
+            (function () {
+                var saved = localStorage.getItem("theme");
+                var darkPref = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                var theme = (saved === "light" || saved === "dark") ? saved : (darkPref ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+            })();
+        </script>
+
+        <link rel="canonical" href="https://yunshanzhao.github.io" />
+
 
     </head>
 
@@ -20,19 +44,96 @@
 
     <body>
 
-        <p> Website under construction, nothing to see here.
-            <br> Plan to record Academic Research / Penmanship / Photography / Cocktail here. </p>
 
-        <a href="https://github.com/YunshanZhao" title=""> Github </a>
+    <nav class="navbar">
 
-        <div class="card"></div>
+        <div class="nav-left">
+            <a href="#About">About</a>
+            <a href="#Education">Education</a>
+            <a href="#Visits">Visits</a>
+            <a href="#Publications">Publications</a>
+            <a href="#Honors & Awards">Honors & Awards</a>
+        </div>
+
+        <button id="theme-toggle">
+            ☀️
+        </button>
+
+    </nav>
+
+
+        <h1 id="About">About</h1>
+
+        <div class="About">
+
+            <p>Hi, this is Yunshan Zhao (赵云杉).</p>
+
+            <p>I'm a Master's student at Shandong University working under the supervision of <a href="https://wei-group.net/currentmember" target="_blank" rel="noopener noreferrer" title=""> Prof. Leyi Wei </a>.
+            <br>My current research focuses on deep learning-driven computational biology.</p>
+
+            <p>In my spare time, I enjoy film photography, English calligraphy, classic cocktails, and other creative pursuits.
+            <br>I will update more content about these interests in the future.</p>
+
+        </div>
+
+
+        <h1 id="Education">Education</h1>
+
+        <div class="Education-item">
+
+            <p>Shandong University, China
+            <br>M.S. in Artificial Intelligence, Sep 2026 - Present</p>
+
+        </div>
+
+        <div class="Education-item">
+            <p>Shandong University, China
+            <br>B.S. in Mathematics and Applied Mathematics, Sep 2022 - June 2026</p>
+        </div>
+
+
+        <h1 id="Visits">Visits</h1>
+
+        <div class="Visits-item">
+
+            <p>University of California, Irvine, United States
+            <br>June 2025 - Sep 2025</p>
+
+        </div>
+
+
+        <h1 id="Publications">Publications</h1>
+
+        <div class="Publications-item">
+            <p>This poor guy currently hasn't published anything.</p>
+        </div>
+
+        <h1 id="Honors & Awards">Honors & Awards</h1>
+
+        <div class="Honors & Awards-item">
+
+            <p>Outstanding Graduate, Shandong University
+            <br>Mar 2026</p>
+
+        </div>
+
+        <div class="Honors & Awards-item">
+
+            <p>Merit Student, Shandong University
+            <br>Oct 2023</p>
+
+        </div>
+
 
         <footer>
-            <p> <hr /> © 2025 Yunshan Zhao. All Rights Reserved.</p>
+            <p> <hr /> © 2026 Yunshan Zhao. All Rights Reserved.</p>
         </footer>
 
-    </body>
 
+        <script src="./scripts/theme.js"></script>
+
+
+    </body>
 
 
 
