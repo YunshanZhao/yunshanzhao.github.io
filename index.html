@@ -3,137 +3,208 @@
 
 
 
-    <head>
+<head>
 
 
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Yunshan Zhao - Homepage</title>
-        <meta name="description" content="Yunshan Zhao | Master's Student in AI @ Shandong University. Research in deep learning and computational biology." />
-        <meta name="author" content="Yunshan Zhao" />
+    <title>Yunshan Zhao - Homepage</title>
+    <meta name="description" content="Yunshan Zhao | Master's Student in AI @ Shandong University. Research in deep learning and computational biology." />
+    <meta name="author" content="Yunshan Zhao" />
 
-        <meta property="og:title" content="Yunshan Zhao - Homepage" />
-        <meta property="og:description" content="Yunshan Zhao | Master's Student in AI @ Shandong University. Research in deep learning and computational biology." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yunshanzhao.github.io" />
-        <meta property="og:image" content="https://yunshanzhao.github.io/images/icon.JPG" />
-        <meta property="og:locale" content="en-US" />
+    <meta property="og:title" content="Yunshan Zhao - Homepage" />
+    <meta property="og:description" content="Yunshan Zhao | Master's Student in AI @ Shandong University. Research in deep learning and computational biology." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yunshanzhao.github.io" />
+    <meta property="og:image" content="https://yunshanzhao.github.io/images/icon.JPG" />
+    <meta property="og:locale" content="en-US" />
 
-        <link rel="icon" href="./images/icon.JPG" />
-        <link rel="apple-touch-icon" href="./images/icon.JPG" />
+    <link rel="icon" href="./images/icon.JPG" />
+    <link rel="apple-touch-icon" href="./images/icon.JPG" />
 
-        <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
 
-        <!-- js确定主题，在指定css后，在</head>前。避免闪屏。 -->
-        <script>
-            (function () {
-                var saved = localStorage.getItem("theme");
-                var darkPref = window.matchMedia("(prefers-color-scheme: dark)").matches;
-                var theme = (saved === "light" || saved === "dark") ? saved : (darkPref ? "dark" : "light");
-                document.documentElement.setAttribute("data-theme", theme);
-            })();
-        </script>
+    <!-- js确定主题，在指定css后，在</head>前。避免闪屏。 -->
+    <script>
+        (function () {
+            var saved = localStorage.getItem("theme");
+            var darkPref = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            var theme = (saved === "light" || saved === "dark") ? saved : (darkPref ? "dark" : "light");
+            document.documentElement.setAttribute("data-theme", theme);
+        })();
+    </script>
 
-        <link rel="canonical" href="https://yunshanzhao.github.io" />
+    <link rel="canonical" href="https://yunshanzhao.github.io" />
+
+    <!-- 字体预加载 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" 
+          rel="stylesheet">
+
+</head>
 
 
-    </head>
+
+<body>
 
 
+<nav class="navbar">
 
-    <body>
+    <div class="nav-container">
 
-
-    <nav class="navbar">
-
-        <div class="nav-left">
+        <div class="nav-items">
             <a href="#About">About</a>
             <a href="#Education">Education</a>
             <a href="#Visits">Visits</a>
             <a href="#Publications">Publications</a>
-            <a href="#Honors & Awards">Honors & Awards</a>
+            <a href="#Honors">Honors</a>
+        </div>
+        
+        <div class="nav-button">
+            <button id="theme-toggle">
+                <span id="theme-icon"></span> <!-- 空，待确定主题后替换 -->
+            </button>
         </div>
 
-        <button id="theme-toggle">
-            ☀️
-        </button>
+    </div>
 
-    </nav>
+</nav>
 
 
-        <h1 id="About">About</h1>
+<h1 id="About">About</h1>
 
-        <div class="About">
+<div class="About">
 
-            <p>Hi, this is Yunshan Zhao (赵云杉).</p>
+    <p>
+        Hi, this is Yunshan Zhao (赵云杉).
 
-            <p>I'm a Master's student at Shandong University working under the supervision of <a href="https://wei-group.net/currentmember" target="_blank" rel="noopener noreferrer" title=""> Prof. Leyi Wei </a>.
-            <br>My current research focuses on deep learning-driven computational biology.</p>
+        <!-- Mail -->
+        <a  class="social-link" href="mailto:yunshanzhao2004@gmail.com" title="" style="text-decoration: none">
+            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 640 640">
+                <path d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z"/>
+            </svg>
+        </a>
 
-            <p>In my spare time, I enjoy film photography, English calligraphy, classic cocktails, and other creative pursuits.
-            <br>I will update more content about these interests in the future.</p>
+        <!-- GitHub -->
+        <a  class="social-link" href="https://github.com/YunshanZhao" target="_blank" rel="noopener noreferrer" title="" style="text-decoration: none">
+            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 640 640">
+                <path d="M280.5 426.5C214.5 418.5 168 371 168 309.5C168 284.5 177 257.5 192 239.5C185.5 223 186.5 188 194 173.5C214 171 241 181.5 257 196C276 190 296 187 320.5 187C345 187 365 190 383 195.5C398.5 181.5 426 171 446 173.5C453 187 454 222 447.5 239C463.5 258 472 283.5 472 309.5C472 371 425.5 417.5 358.5 426C375.5 437 387 461 387 488.5L387 540.5C387 555.5 399.5 564 414.5 558C505 523.5 576 433 576 321C576 179.5 461 64 319.5 64C178 64 64 179.5 64 321C64 432 134.5 524 229.5 558.5C243 563.5 256 554.5 256 541L256 501C249 504 240 506 232 506C199 506 179.5 488 165.5 454.5C160 441 154 433 142.5 431.5C136.5 431 134.5 428.5 134.5 425.5C134.5 419.5 144.5 415 154.5 415C169 415 181.5 424 194.5 442.5C204.5 457 215 463.5 227.5 463.5C240 463.5 248 459 259.5 447.5C268 439 274.5 431.5 280.5 426.5z"/>
+            </svg>
+        </a>
 
+        <!-- Google Scholar -->
+        <a  class="social-link" href="" target="_blank" rel="noopener noreferrer" title="" style="text-decoration: none">
+            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 640 640">
+                <path d="M454.9 362.5C454.9 362.5 454.9 362.6 455 362.6C464.2 382 469.4 403.7 469.4 426.6C469.3 509.1 402.5 576 320 576C237.5 576 170.7 509.1 170.7 426.7C170.7 403.8 175.9 382.1 185.1 362.7C186.8 359.1 188.7 355.5 190.7 352C195.1 344.4 200.1 337.3 205.7 330.7C233.1 298.1 274.2 277.4 320.1 277.4C353.7 277.4 384.7 288.5 409.7 307.3C418.8 314.2 427.1 322 434.5 330.8C440.1 337.4 445.1 344.6 449.5 352.1C451.5 355.5 453.3 359.1 455 362.6L454.9 362.5zM481.3 343.7C451.2 285.3 390.3 245.3 320 245.3C249.7 245.3 188.8 285.3 158.7 343.7L64 266.7L320 64L576 266.7L481.3 343.8L481.3 343.7z"/>
+            </svg>
+        </a>
+
+        <!-- Linkedin -->
+        <a  class="social-link" href="" target="_blank" rel="noopener noreferrer" title="" style="text-decoration: none">
+            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 640 640">
+                <path d="M512 96L127.9 96C110.3 96 96 110.5 96 128.3L96 511.7C96 529.5 110.3 544 127.9 544L512 544C529.6 544 544 529.5 544 511.7L544 128.3C544 110.5 529.6 96 512 96zM231.4 480L165 480L165 266.2L231.5 266.2L231.5 480L231.4 480zM198.2 160C219.5 160 236.7 177.2 236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160zM480.3 480L413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480z"/>
+            </svg>
+        </a>
+
+    </p>
+
+    <p>I'm a Master's student at Shandong University working under the supervision of 
+        <a href="https://scholar.google.com/citations?user=0EAV03MAAAAJ" target="_blank" rel="noopener noreferrer" title=""> Prof. Leyi Wei </a>
+        .
+        <br>My current research focuses on deep learning-driven computational biology.</p>
+
+    <p>In my spare time, I enjoy film photography, English calligraphy, classic cocktails, and other creative pursuits.
+        <br>I will update more content about these interests in the future.</p>
+
+</div>
+
+
+<h1 id="Education">Education</h1>
+
+<div class="Education-item">
+    <div class="item-text">
+        <div class="item-title">
+            <p>M.S. in Artificial Intelligence</p>
         </div>
-
-
-        <h1 id="Education">Education</h1>
-
-        <div class="Education-item">
-
-            <p>Shandong University, China
-            <br>M.S. in Artificial Intelligence, Sep 2026 - Present</p>
-
+        <div>
+            <p> <span class="time">2026 - Present</span> &nbsp;&nbsp;&nbsp;&nbsp; Shandong University, China</p>
         </div>
-
-        <div class="Education-item">
-            <p>Shandong University, China
-            <br>B.S. in Mathematics and Applied Mathematics, Sep 2022 - June 2026</p>
+        <div>
+            STAY TUNED!
         </div>
+    </div>
+    <img class="organization-logo" src="./images/SDU_logo.svg" alt="Shandong University logo" draggable="false" />
+</div>
 
-
-        <h1 id="Visits">Visits</h1>
-
-        <div class="Visits-item">
-
-            <p>University of California, Irvine, United States
-            <br>June 2025 - Sep 2025</p>
-
+<div class="Education-item">
+    <div class="item-text">
+        <div class="item-title">
+            <p>B.S. in Mathematics and Applied Mathematics</p>
         </div>
-
-
-        <h1 id="Publications">Publications</h1>
-
-        <div class="Publications-item">
-            <p>This poor guy currently hasn't published anything.</p>
+        <div>
+            <p> <span class="time">Sep 2022 - June 2026</span> &nbsp;&nbsp;&nbsp;&nbsp; Shandong University, China</p>
         </div>
-
-        <h1 id="Honors & Awards">Honors & Awards</h1>
-
-        <div class="Honors & Awards-item">
-
-            <p>Outstanding Graduate, Shandong University
-            <br>Mar 2026</p>
-
+        <div>
+            GPA: 90.62/100.
+            <br>Selected for direct admission to a Master's program based on academic excellence, with exemption from the National Postgraduate Entrance Examination.
         </div>
+    </div>
+    <img class="organization-logo" src="./images/SDU_logo.svg" alt="Shandong University logo" draggable="false" />
+</div>
 
-        <div class="Honors & Awards-item">
 
-            <p>Merit Student, Shandong University
-            <br>Oct 2023</p>
+<h1 id="Visits">Visits</h1>
 
+<div class="Visits-item">
+    <div class="item-text">
+        <div class="item-title">
+            <p>University of California, Irvine, United States</p>
         </div>
+        <div>
+            <p><span class="time">June 2025 - Sep 2025</span></p>
+        </div>
+        <div>
+            <p>Worked under the supervision of 
+                <a href="https://scholar.google.com/citations?user=1CR0meYAAAAJ" target="_blank" rel="noopener noreferrer" title=""> Prof. Xiaohui Xie </a> 
+                and 
+                <a href="https://scholar.google.com/citations?user=i-Qw92sAAAAJ" target="_blank" rel="noopener noreferrer" title=""> Ph.D. student Arghavan Rezvani </a>
+                , conducting research on histopathological image registration.</p>
+        </div>
+    </div>
+    <img class="organization-logo" src="./images/UCI_logo.svg" alt="UC Irvine logo" draggable="false" />
+</div>
 
 
-        <footer>
-            <p> <hr /> © 2026 Yunshan Zhao. All Rights Reserved.</p>
-        </footer>
+<h1 id="Publications">Publications</h1>
+
+<div class="Publications-item">
+    <p>This poor guy currently hasn't published anything.</p>
+</div>
+
+<h1 id="Honors">Honors</h1>
+
+<div class="Honors-item">
+    <p><span class="time">Mar 2026</span> &nbsp;&nbsp;&nbsp;&nbsp; Outstanding Graduate, Shandong University</p>
+</div>
+
+<div class="Honors-item">
+    <p><span class="time">Oct 2023</span> &nbsp;&nbsp;&nbsp;&nbsp; Merit Student, Shandong University</p>
+</div>
 
 
-        <script src="./scripts/theme.js"></script>
+<footer>
+    <hr />
+    <p> © 2026 Yunshan Zhao. All Rights Reserved. | Last Updated: July 2026 </p>
+</footer>
 
 
-    </body>
+<script src="./scripts/theme.js"></script>
+
+
+</body>
 
 
 

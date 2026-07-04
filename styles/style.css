@@ -1,87 +1,24 @@
-/*  light mode / dark mode  */
-[data-theme="dark"] {
-    --background: #1e1f22;
-    --text: #ffffff;
-    --border: #595c62;
-}
-
-[data-theme="light"] {
-    --background: #ffffff;
-    --text: #000000;
-    --border: #a9aebe;
-}
-
-body {
-    background-color: var(--background);
-    color: var(--text);
-    transition: background-color 1.5s, color 0.5s;
-}
-
-
-
-/*  navigation bar  */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1rem;
-    background: var(--background);
-    border-bottom: 0.1rem solid var(--border);
-    z-index: 1000;
-}
-
-body {
-    padding-top: 3rem; /* 避免内容被导航栏遮住 */
-}
-
-.nav-left {
-    display: flex;
-    gap: 2rem;
-}
-
-.nav-left a {
-    color: var(--text);
-    text-decoration: none; /* 去掉链接下划线 */
-    font-weight: 600;
-}
-
-#theme-toggle {
-    background: var(--background);
-    border: none;
-    color: var(--text);
-    cursor: pointer; /* 鼠标变成手形 */
-    font-size: 1rem;
-}
-
-
-
-/*  fonts  */
 html {
     font-family: system-ui, sans-serif;
     font-size: 1rem;
     line-height: 1.5;
+
+    padding-left: 1rem; /* margin */
+    padding-right: 1rem; /* margin */
+
+    box-sizing: border-box; /* 防止box被撑大破坏布局 */
+
+    scroll-behavior: smooth;
 }
 
 code {
-    font-family: ui-monospace, monospace;
-    font-size: 1rem;
-    line-height: 1.5;
+    font-family: "JetBrains Mono", "Cascadia Mono", Consolas, ui-monospace, monospace;
 }
 
 footer {
-    font-family: system-ui, sans-serif;
-    font-size: 0.5rem;
-    line-height: 1.5;
+    font-size: 0.6rem;
 }
 
-
-
-/*  links  */
 a:link {
     color: var(--text);
 }
@@ -93,19 +30,159 @@ a:visited {
 a:hover {
     color: #f0c35b;
     text-decoration: none;
+    transition: color 0.25s;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.social-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+}
+
+[data-theme="dark"] {
+    --background: #1e1f22;
+    --text: #ffffff;
+    --border: #595c62;
+    --opacity: 0.6
+}
+
+[data-theme="light"] {
+    --background: #ffffff;
+    --text: #000000;
+    --border: #a9aebe;
+    --opacity: 0.4;
+}
+
+#theme-toggle {
+    background: var(--background);
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 50%;
+    color: var(--text);
+    cursor: pointer; /* 鼠标变成手形 */
+    display: block;
+}
+
+/* border test*/
+#theme-toggle:hover {
+    color: #f0c35b;
+    text-decoration: none;
+    transition: color 0.25s;
+}
+
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    transition: background-color 1.5s, color 0.5s;
+
+    max-width: 840px;
+    margin: 0px auto;
+    padding: 0 0px;
+
+    padding-top: 2.5rem; /* navigation bar 避免内容被导航栏遮住 */
+}
+
+h1 {
+    scroll-margin-top: 3rem; /* navigation bar 避免定位到标题时，标题被导航栏遮住 */
+}
+
+
+
+/*  navigation bar  */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    background: var(--background);
+    border-bottom: 0.1rem solid var(--border);
+    transition: border-bottom 1.5s;
+    
+}
+
+.nav-container {
+    margin: 0 auto; /* 水平居中 */
+    padding: 1rem 2rem; /* 上下1rem，左右2rem */
+    
+    display: flex;
+    justify-content: center; /* 子元素居中 */
+    align-items: center;
+    position: relative; /* 绝对定位以nav-container容器为基准 */
+}
+
+.nav-button {
+    position: absolute; /* 绝对定位到右侧 */
+    right: 2rem; /* 和padding一致 */
+}
+
+.nav-items {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-items a {
+    text-decoration: none;
+    font-weight: 600;
 }
 
 
 
 /*  cards  */
-.card {
-    width: 40vw;
-    height: 40vh;
-    margin: 2vw;
-    border-radius: 2vw;
-    background-image: url('../images/temp.JPG');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
+.Education-item,
+.Visits-item {
+    display: flex; /* 文字块和logo横向左右排列 */
+    align-items: flex-start; /* 垂直方向，文字贴顶 */
+    justify-content: space-between; /* 水平方向，文字块顶到最左，logo 推到最右 */
+    gap: 1rem; /* 文字与logo间距 */
+
+    border: 0.1rem solid var(--border);
+    transition: border 1.5s;
+    border-radius: 0.75rem;
+    padding: 1rem 1rem; /* 四周1rem内边距 */
+    margin: 1rem 0rem; /* 上下1rem外边距 */
 }
 
+.item-text {
+    display: flex;
+    flex-direction: column; /* 主轴改为竖直方向 */
+    align-items: flex-start; /* 水平方向左对齐 */
+    text-align: left; /* 文字左对齐 */
+}
+
+.item-text p {
+    margin: 0;
+}
+
+.item-title p {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.time {
+    font-family: "JetBrains Mono", "Cascadia Mono", Consolas, ui-monospace, monospace;
+    opacity: var(--opacity);
+    transition: opacity 1.5s;
+}
+
+.organization-logo {
+    height: 8rem;
+    width: auto;
+    flex-shrink: 0; /* 禁止被压缩 */
+    align-self: center; /* logo在卡片内居中，覆盖父级flex-start */
+    opacity: var(--opacity);
+    transition: opacity 1.5s;
+    user-drag: none; /* 禁止拖拽 */
+    -webkit-user-drag: none; /* Chrome/Safari私有前缀，禁止拖拽 */
+    user-select: none; /* 禁止图片选中 */
+}
