@@ -182,7 +182,17 @@ h1 {
     align-self: center; /* logo在卡片内居中，覆盖父级flex-start */
     opacity: var(--opacity);
     transition: opacity 1.5s;
-    user-drag: none; /* 禁止拖拽 */
-    -webkit-user-drag: none; /* Chrome/Safari私有前缀，禁止拖拽 */
+
     user-select: none; /* 禁止图片选中 */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    user-drag: none; /* 禁止拖拽 */
+    -webkit-user-drag: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+
+    pointer-events: none; /* 禁用鼠标事件（同时禁止了点击事件） */
+
 }
