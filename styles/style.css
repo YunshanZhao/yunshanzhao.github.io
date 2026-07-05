@@ -84,7 +84,7 @@ body {
     color: var(--text);
     transition: background-color 1.5s, color 0.5s;
 
-    max-width: 840px;
+    max-width: 55rem;
     margin: 0px auto;
     padding: 0 0px;
 
