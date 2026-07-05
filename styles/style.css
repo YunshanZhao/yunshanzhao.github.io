@@ -9,6 +9,11 @@ html {
     box-sizing: border-box; /* 防止box被撑大破坏布局 */
 
     scroll-behavior: smooth;
+
+    user-select: none; /* 禁止选中 */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 code {
@@ -183,7 +188,7 @@ h1 {
     opacity: var(--opacity);
     transition: opacity 1.5s;
 
-    user-select: none; /* 禁止图片选中 */
+    user-select: none; /* 禁止选中 */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -192,7 +197,5 @@ h1 {
     -webkit-user-drag: none;
     -webkit-user-drag: none;
     -khtml-user-drag: none;
-
-    pointer-events: none; /* 禁用鼠标事件（同时禁止了点击事件） */
 
 }
