@@ -24,6 +24,18 @@ footer {
     font-size: 0.6rem;
 }
 
+.footer-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* 小屏幕自动换行 */
+    gap: 5rem;
+}
+
+a {
+    transition: color 0.3s;
+}
+
 a:link {
     color: var(--text);
 }
@@ -35,7 +47,6 @@ a:visited {
 a:hover {
     color: #f0c35b;
     text-decoration: none;
-    transition: color 0.25s;
 }
 
 .social-link {
@@ -74,13 +85,13 @@ a:hover {
     color: var(--text);
     cursor: pointer; /* 鼠标变成手形 */
     display: block;
+    transition: background-color 1.5s, color 0.3s;
 }
 
 /* border test*/
 #theme-toggle:hover {
     color: #f0c35b;
     text-decoration: none;
-    transition: color 0.25s;
 }
 
 
@@ -104,15 +115,15 @@ h1 {
 
 /*  navigation bar  */
 .navbar {
+    background: var(--background);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
 
-    background: var(--background);
     border-bottom: 0.1rem solid var(--border);
-    transition: border-bottom 1.5s;
+    transition: background-color 1.5s, border-bottom 1.5s;
     
 }
 
@@ -197,5 +208,7 @@ h1 {
     -webkit-user-drag: none;
     -webkit-user-drag: none;
     -khtml-user-drag: none;
+
+    pointer-events: none; /* 禁用鼠标事件（同时禁止了点击事件） */
 
 }
