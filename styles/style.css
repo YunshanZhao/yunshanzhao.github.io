@@ -33,7 +33,7 @@ footer {
 }
 
 a {
-    transition: color 0.3s;
+    transition: color 0.5s;
 }
 
 a:link {
@@ -66,7 +66,7 @@ a:hover {
     --background: #1e1f22;
     --text: #ffffff;
     --border: #595c62;
-    --opacity: 0.6
+    --opacity: 0.6;
 }
 
 [data-theme="light"] {
@@ -76,7 +76,8 @@ a:hover {
     --opacity: 0.4;
 }
 
-#theme-toggle {
+#theme-toggle,
+#menu-toggle {
     background: var(--background);
     width: 2.5rem;
     height: 2.5rem;
@@ -84,12 +85,29 @@ a:hover {
     border-radius: 50%;
     color: var(--text);
     cursor: pointer; /* 鼠标变成手形 */
+    transition: background-color 1.5s, color 0.5s;
+}
+
+#theme-toggle {
+    position: absolute; /* 绝对定位到右侧 */
+    right: 2rem; /* 和padding一致 */
     display: block;
-    transition: background-color 1.5s, color 0.3s;
+}
+
+#menu-toggle {
+    position: absolute; /* 绝对定位到右侧 */
+    left: 2rem; /* 和padding一致 */
+    
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: background-color 1.5s, color 0.5s, opacity 0.5s, visibility 0s 0.5s;
 }
 
 /* border test*/
-#theme-toggle:hover {
+#theme-toggle:hover,
+#menu-toggle:hover {
     color: #f0c35b;
     text-decoration: none;
 }
@@ -130,6 +148,8 @@ h1 {
 .nav-container {
     margin: 0 auto; /* 水平居中 */
     padding: 1rem 2rem; /* 上下1rem，左右2rem */
+
+    min-height: 1.5rem; /* 响应式导航栏隐藏后仍保留原有内容高度 */
     
     display: flex;
     justify-content: center; /* 子元素居中 */
@@ -137,14 +157,12 @@ h1 {
     position: relative; /* 绝对定位以nav-container容器为基准 */
 }
 
-.nav-button {
-    position: absolute; /* 绝对定位到右侧 */
-    right: 2rem; /* 和padding一致 */
-}
-
 .nav-items {
     display: flex;
     gap: 2rem;
+
+    opacity: 1;
+    transition: opacity 0.5s;
 }
 
 .nav-items a {
@@ -152,6 +170,221 @@ h1 {
     font-weight: 600;
 }
 
+/* mobile dropdown 跨入 desktop 时，保留一份竖向菜单用于淡出 */
+.nav-items.is-breakpoint-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 3rem;
+
+    background: var(--background);
+    border-bottom: 0.1rem solid var(--border);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+
+    transition: background-color 1.5s, color 0.5s, border-bottom 1.5s, opacity 1.5s 0.5s, visibility 0s 2s;
+}
+
+.nav-items.is-breakpoint-dropdown.is-fading-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.nav-items.is-breakpoint-dropdown a {
+    animation: nav-breakpoint-item-out 1s both;
+    transition: color 0.5s;
+}
+
+.nav-items.is-breakpoint-dropdown a:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.nav-items.is-breakpoint-dropdown a:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.nav-items.is-breakpoint-dropdown a:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.nav-items.is-breakpoint-dropdown a:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+.nav-items.is-breakpoint-dropdown a:nth-child(5) {
+    animation-delay: 0.1s;
+}
+
+@keyframes nav-breakpoint-item-out {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-3rem);
+    }
+}
+
+/* desktop navigation 与旧 dropdown 同时渐显，避免布局切换闪烁 */
+.nav-items.is-desktop-entering {
+    opacity: 0;
+    pointer-events: none;
+    transition: none;
+}
+
+.nav-items.is-desktop-entering.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s;
+}
+
+/* responsive navigation */
+@media (max-width: 48rem) { /* 页面宽度过窄时生效 */
+
+    #menu-toggle {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+
+        transition: background-color 1.5s, color 0.5s, opacity 0.5s, visibility 0s 0s;
+    }
+
+    .nav-items {
+        opacity: 0; /* 视觉上隐藏菜单 */
+        visibility: hidden; /* 交互上隐藏菜单 */
+        pointer-events: none; /* 隐藏时禁止点击 */
+        background: var(--background);
+        transition: background-color 1.5s, color 0.5s, opacity 0.5s, visibility 0s 0.5s, border-bottom 1.5s;
+    }
+
+    /* 仅点击交互时触发菜单动画，页面收窄时不触发 */
+    .nav-items.is-animated {
+        display: flex;
+        
+        /* 定位展开后的响应式菜单 */
+        position: absolute;
+        top: 100%; /* 从 .nav-container 顶部开始，向下移动一个完整 .nav-container 高度。使菜单正好贴在 navbar 下方 */
+        left: 0;
+        right: 0;
+        
+        /* 将导航项目变为竖向 */
+        flex-direction: column;
+        gap: 1rem;
+
+        padding: 2rem 3rem;
+
+        border-bottom: 0.1rem solid var(--border);
+
+        transition: background-color 1.5s, color 0.5s, border-bottom 1.5s, opacity 0.5s, visibility 0s 0.5s; /*  visibility 相当于总开关， opacity 相当一个ND Filter */
+    }
+
+    .nav-items.is-animated.is-open {
+        transition: background-color 1.5s, color 0.5s, border-bottom 1.5s, opacity 0.5s, visibility 0s 0s;
+    }
+
+    .nav-items.is-animated a { /* 只滑动文字，防止背景遮挡其他内容 */
+        opacity: 0;
+        transform: translateY(-3rem); /* 菜单向上移动，打开时向下移动 */
+        transition: color 0.5s;
+    }
+
+    .nav-items.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* 导航项目依次收起 */
+    .nav-items.is-animated.is-closing {
+        pointer-events: none;
+        transition: background-color 1.5s, color 0.5s, border-bottom 1.5s, opacity 1.5s 0.5s, visibility 0s 2s;
+    }
+
+    .nav-items.is-animated.is-open a {
+        animation: nav-item-in 3s both;
+    }
+
+    /* 导航项目依次进入 */
+    @keyframes nav-item-in {
+        from {
+            opacity: 0;
+            transform: translateY(-3rem); /* 从上方进入 */
+        }
+
+        33.333% {
+            transform: translateY(0); /* 保留原有 1s transform 时长 */
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nav-items.is-animated.is-open a:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .nav-items.is-animated.is-open a:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .nav-items.is-animated.is-open a:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .nav-items.is-animated.is-open a:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .nav-items.is-animated.is-open a:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+    .nav-items.is-animated.is-closing a {
+        animation: nav-item-out 1s both;
+    }
+
+    @keyframes nav-item-out {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        to {
+            opacity: 0;
+            transform: translateY(-3rem); /* 向上收起 */
+        }
+    }
+
+    .nav-items.is-animated.is-closing a:nth-child(1) {
+        animation-delay: 0.5s;
+    }
+
+    .nav-items.is-animated.is-closing a:nth-child(2) {
+        animation-delay: 0.4s;
+    }
+
+    .nav-items.is-animated.is-closing a:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .nav-items.is-animated.is-closing a:nth-child(4) {
+        animation-delay: 0.2s;
+    }
+
+    .nav-items.is-animated.is-closing a:nth-child(5) {
+        animation-delay: 0.1s;
+    }
+
+}
 
 
 /*  cards  */
