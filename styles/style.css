@@ -130,6 +130,93 @@ h1 {
 }
 
 
+/* 站内换页时保留顶部导航，正文和仍可见的下拉菜单分别过渡。 */
+@media (prefers-reduced-motion: no-preference) {
+
+    @view-transition {
+        navigation: auto;
+    }
+
+    html.is-site-entry {
+        background-color: var(--background);
+    }
+
+    html.is-site-entry body {
+        animation: page-fade-in 0.5s ease-out both;
+    }
+
+    .navbar {
+        view-transition-name: site-header;
+    }
+
+    .nav-dropdown.is-open,
+    .nav-dropdown.is-closing {
+        view-transition-name: site-menu;
+    }
+
+    ::view-transition {
+        background-color: var(--background);
+    }
+
+    ::view-transition-group(root),
+    ::view-transition-group(site-header),
+    ::view-transition-group(site-menu) {
+        animation: none;
+    }
+
+    ::view-transition-group(site-header) {
+        z-index: 2;
+    }
+
+    ::view-transition-group(site-menu) {
+        z-index: 1;
+    }
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        mix-blend-mode: normal;
+    }
+
+    ::view-transition-old(root),
+    ::view-transition-old(site-menu) {
+        animation: page-fade-out 0.5s ease-in both;
+    }
+
+    ::view-transition-new(root) {
+        animation: page-fade-in 0.5s ease-out 0.5s both;
+    }
+
+    ::view-transition-old(site-header),
+    ::view-transition-new(site-menu) {
+        display: none;
+    }
+
+    ::view-transition-new(site-header) {
+        animation: none;
+    }
+
+}
+
+@keyframes page-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes page-fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
 
 /*  navigation bar  */
 .navbar {
