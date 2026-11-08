@@ -29,7 +29,7 @@ footer {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap; /* 小屏幕自动换行 */
-    gap: 5rem;
+    gap: 0.25rem 5rem; /* 换行时只保留少量纵向间距 */
 }
 
 a {
