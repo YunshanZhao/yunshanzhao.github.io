@@ -14,16 +14,15 @@
     menuToggle.setAttribute("aria-controls", dropdown.id);
     menuToggle.setAttribute("aria-expanded", "false");
 
-    // 切换动画前记录各链接的当前画面，反向时从这里接续。
-    function captureLinkFrame() {
+    // 切换动画前记录各链接的透明度，反向时从这里接续。
+    function captureLinkOpacity() {
         let fullyVisible = true;
         navLinks.forEach(function (link) {
-            const { opacity, transform } = window.getComputedStyle(link);
+            const { opacity } = window.getComputedStyle(link);
             if (Number(opacity) < 1) {
                 fullyVisible = false;
             }
             link.style.setProperty("--nav-start-opacity", opacity);
-            link.style.setProperty("--nav-start-transform", transform);
         });
         return fullyVisible;
     }
@@ -34,7 +33,7 @@
             return;
         }
 
-        const fullyVisible = captureLinkFrame();
+        const fullyVisible = captureLinkOpacity();
         dropdown.classList.toggle("is-interrupted", !fullyVisible);
         dropdown.classList.add("is-closing");
         dropdown.classList.remove("is-open");
@@ -48,7 +47,6 @@
         dropdown.classList.remove("is-interrupted");
         navLinks.forEach(function (link) {
             link.style.removeProperty("--nav-start-opacity");
-            link.style.removeProperty("--nav-start-transform");
         });
     }
 
@@ -66,7 +64,7 @@
 
         // 收起途中重开时，沿用当前画面并跳过逐项延迟。
         if (dropdown.classList.contains("is-closing")) {
-            captureLinkFrame();
+            captureLinkOpacity();
             dropdown.classList.remove("is-closing");
             dropdown.classList.add("is-interrupted");
         }

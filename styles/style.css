@@ -304,9 +304,8 @@ h1 {
     transition: background-color 1.5s, color 0.5s, border-bottom 1.5s, opacity 0.5s, visibility 0s 0.5s;
 }
 
-.nav-dropdown a { /* 只滑动文字，菜单面板独立淡入淡出 */
+.nav-dropdown a {
     opacity: 0;
-    transform: translateY(-3rem);
     transition: color 0.5s;
 }
 
@@ -326,20 +325,14 @@ h1 {
     animation: nav-item-in 3s both;
 }
 
-/* 导航项目依次进入 */
+/* 导航项目依次淡入，避免 iOS 竖屏的逐项位移动画漏帧。 */
 @keyframes nav-item-in {
     from {
         opacity: var(--nav-start-opacity, 0);
-        transform: var(--nav-start-transform, translateY(-3rem)); /* 从上方进入 */
-    }
-
-    33.333% {
-        transform: translateY(0); /* 保留原有 1s transform 时长 */
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
@@ -370,12 +363,10 @@ h1 {
 @keyframes nav-item-out {
     from {
         opacity: var(--nav-start-opacity, 1);
-        transform: var(--nav-start-transform, translateY(0));
     }
 
     to {
         opacity: 0;
-        transform: translateY(-3rem); /* 向上收起 */
     }
 }
 
